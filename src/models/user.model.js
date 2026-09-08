@@ -23,7 +23,7 @@ password:{
 role:{
     type:String,
     enum:["member","trainer","admin"],
-    default:"trainer"
+    default:"member"
 }
 
 

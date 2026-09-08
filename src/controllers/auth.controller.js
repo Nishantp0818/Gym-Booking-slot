@@ -7,7 +7,7 @@ const jwt = require("jsonwebtoken");
 const registerUser = async (req, res) => {
 
    try {
-      const { name, email, contact, password } = req.body;
+      const { name, email, contact, password} = req.body;
 
       // check required field 
       if (!name || !email || !contact || !password)
@@ -27,6 +27,10 @@ const registerUser = async (req, res) => {
       // password hashing
 
       const hashedPassword = await bcrypt.hash(password, 10);
+         // user create
+       const user = await userModel.create({
+         name, email, contact, password: hashedPassword
+      });
        
       // JWT 
       const token =jwt.sign({
@@ -37,15 +41,9 @@ const registerUser = async (req, res) => {
           });
        res.cookie("token",token,{
          httpOnly: true,
-         maxAge:7*24*60*60*100
-       })   
-      
+         maxAge:7*24*60*60*1000
+       })
 
-
-      //create user 
-      const user = await userModel.create({
-         name, email, contact, password: hashedPassword
-      });
       return res.status(201).json({
          message: "User registered successfully",
          user
@@ -99,7 +97,7 @@ const loginUser = async (req, res) => {
          httpOnly: true,
          //  secure: true,
          //  sameSite: "none",
-         maxAge: 7*24*60*60*100
+         maxAge: 7*24*60*60*1000
       });
 
       // login successfully
@@ -112,7 +110,7 @@ const loginUser = async (req, res) => {
    } catch (error) {
       res.status(500).json({
          message: " Internal server Error",
-      
+         error: error.message
       })
    }
 }
