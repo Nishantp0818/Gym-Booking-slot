@@ -62,12 +62,6 @@ const createBooking = async (req, res) => {
             user: userId,
             class: classId
         });
-
-        
-        gymClass.availableSlots -= 1;
-        await gymClass.save();
-        
-
         
              // Send confirmation email
         await sendmail(
