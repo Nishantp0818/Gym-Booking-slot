@@ -14,10 +14,10 @@ const createClass = async(req, res)=>{
     }
 
     const trainer = req.user.id;
-    const avaibleSlots =totalSlots;
+    const  availableSlots =totalSlots;
 
     const createdClass = await classModel.create({
-        name, category, description, image, trainer, date, time, totalSlots,avaibleSlots
+        name, category, description, image, trainer, date, time, totalSlots,availableSlots
     })
 
       
@@ -32,7 +32,7 @@ const createClass = async(req, res)=>{
     })
 }
 }
-
+   // Get all classes
 const getAllClass = async(req, res)=>{
      try{
 
