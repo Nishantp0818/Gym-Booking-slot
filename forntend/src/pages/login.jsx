@@ -3,7 +3,7 @@ import {useState} from "react";
 import { useNavigate } from "react-router-dom";
 
 
-const Login = () => {
+const Login = ({setIsLoggedIn}) => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -26,6 +26,7 @@ const Login = () => {
     console.log(data);
     if(response.ok){
       console.log(data.message);
+      setIsLoggedIn(true)
       navigate("/");
     }else{
       console.log(data.message);

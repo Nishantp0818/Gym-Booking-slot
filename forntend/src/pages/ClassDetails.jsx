@@ -9,7 +9,6 @@ const ClassDetails = () => {
 
     const handleBooking = async () => {
   try {
-    console.log("Booking class ID:", id);
     const response = await fetch(
       "http://localhost:3000/api/auth/book",
       {
