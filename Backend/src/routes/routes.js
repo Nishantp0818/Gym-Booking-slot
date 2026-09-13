@@ -24,8 +24,9 @@ router.post("/book",authMiddleware,roleMiddleware("member"),bookingController.cr
 router.put("/update-role/:id",authMiddleware,roleMiddleware("admin"),adminController.updateUser)
 router.get("/get-bookings",authMiddleware,roleMiddleware("member"),bookingController.getMyBookings)
 router.delete("/cancel-booking/:id",authMiddleware,roleMiddleware("member"),bookingController.cancelBooking)
-router.get("/admin/bookings",authMiddleware,roleMiddleware("admin"),adminBookingController.getAllBookings)
-
+router.get("/bookings",authMiddleware,roleMiddleware("admin"),adminBookingController.getAllBookings)
+router.get("/me", authMiddleware, authcontroller.getCurrentUser);
+router.get("/users", authMiddleware, roleMiddleware("admin"),adminController.getAllUsers);
 
 
 module.exports =router;

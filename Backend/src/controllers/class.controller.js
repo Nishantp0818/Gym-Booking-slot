@@ -1,4 +1,5 @@
 const classModel = require ("../models/class.model");
+const bookingModel = require("../models/booking.model");
 
 
 const createClass = async(req, res)=>{
@@ -75,37 +76,73 @@ const getSingleClass = async(req, res)=>{
         })
     }
 };
-      
-     // Update Class
-     const updateClass = async(req, res)=>{
+ 
 
-    try{
+// Update Class
+const updateClass = async (req, res) => {
+  try {
+    const update = await classModel.findById(req.params.id);
 
-    const update = await classModel.findById(req.params.id)
-
-    if(!update){
-        return res.status(404).json({
-            message:"Class not found"
-        })
+    if (!update) {
+      return res.status(404).json({
+        message: "Class not found",
+      });
     }
-     
 
-     if(update.trainer.toString()!==req.user.id){
-        return res.status(403).json({
-            message:"unauthorized"
-        })
-     }
-     const updated =await classModel.findByIdAndUpdate(req.params.id, req.body,{new:true})
-
-     res.status(200).json({
-        message:"Successfully update",
-        updated
-     })
-    }catch(error){
-        res.status(500).json({
-            message:"error"
-        })
+    // Check class owner
+    if (update.trainer.toString() !== req.user.id) {
+      return res.status(403).json({
+        message: "Unauthorized",
+      });
     }
+
+    // Count active bookings
+    const activeBookings = await bookingModel.countDocuments({
+      class: req.params.id,
+      status: "Active",
+    });
+
+    // New total slots
+    const newTotalSlots =
+      req.body.totalSlots !== undefined
+        ? Number(req.body.totalSlots)
+        : update.totalSlots;
+
+    // New total slots cannot be less than existing bookings
+    if (newTotalSlots < activeBookings) {
+      return res.status(400).json({
+        message: `Total slots cannot be less than active bookings (${activeBookings})`,
+      });
+    }
+
+    // Calculate available slots
+    const newAvailableSlots = newTotalSlots - activeBookings;
+
+    const updated = await classModel.findByIdAndUpdate(
+      req.params.id,
+      {
+        ...req.body,
+        totalSlots: newTotalSlots,
+        availableSlots: newAvailableSlots,
+      },
+      {
+         returnDocument: "after"
+      }
+    );
+
+    return res.status(200).json({
+      message: "Successfully updated",
+      updated,
+    });
+
+  } catch (error) {
+    console.error("Update class error:", error);
+
+    return res.status(500).json({
+      message: "Error updating class",
+      error: error.message,
+    });
+  }
 };
 
 // Delete

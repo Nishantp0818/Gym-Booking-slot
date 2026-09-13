@@ -103,7 +103,9 @@ const loginUser = async (req, res) => {
       // login successfully
       return res.status(200).json({
          message: " Login successfully",
-         token
+         role: user.role,
+           token
+       
       });
 
 
@@ -135,4 +137,34 @@ const logoutUser = async(req,res)=>{
 
 }
 
-module.exports = { registerUser, loginUser , logoutUser};
+
+
+
+const getCurrentUser = async (req, res) => {
+  try {
+    const user = req.user;
+
+    if (user) {
+      return res.status(200).json({
+        message: "User is already logged in",
+        isLoggedIn: true,
+        role: user.role
+      });
+    }
+   
+    return res.status(401).json({
+      message: "User is not logged in",
+      isLoggedIn: false
+    });
+
+  } catch (error) {
+    console.log("Server error:", error);
+
+    return res.status(500).json({
+      message: "Internal server error"
+    });
+  }
+};
+
+
+module.exports = { registerUser, loginUser , logoutUser, getCurrentUser};
