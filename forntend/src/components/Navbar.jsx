@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 
-const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
+const Navbar = ({ isLoggedIn, setIsLoggedIn, userRole, setUserRole }) => {
   const navigate = useNavigate();
 
   const handleLogout = async () => {
@@ -20,6 +20,7 @@ const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
       console.log(data.message);
 
       setIsLoggedIn(false);
+      setUserRole("");
       navigate("/");
     }
   };
@@ -30,7 +31,36 @@ const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
 
       {isLoggedIn === true ? (
         <>
-          <Link to="/My-Booking">My Booking</Link>
+          {/* Member */}
+          {userRole === "member" && (
+            <Link to="/My-Booking">My Booking</Link>
+          )}
+
+          {/* Trainer */}
+          {userRole === "trainer" && (
+            <>
+              <Link to="/trainer/create-class">
+                Create Class
+              </Link>
+
+              <Link to="/trainer/manage-classes">
+                Manage Classes
+              </Link>
+            </>
+          )}
+
+          {/* Admin */}
+          {userRole === "admin" && (
+            <>
+              <Link to="/admin/users">
+                Manage Users
+              </Link>
+
+              <Link to="/admin/all-bookings">
+                All Bookings
+              </Link>
+            </>
+          )}
 
           <button type="button" onClick={handleLogout}>
             Logout
@@ -39,6 +69,7 @@ const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
       ) : (
         <>
           <Link to="/login">Login</Link>
+
           <Link to="/register">Register</Link>
         </>
       )}

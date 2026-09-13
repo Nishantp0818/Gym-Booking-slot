@@ -3,7 +3,7 @@ import {useState} from "react";
 import { useNavigate } from "react-router-dom";
 
 
-const Login = ({setIsLoggedIn}) => {
+const Login = ({setIsLoggedIn, setUserRole}) => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -13,7 +13,7 @@ const Login = ({setIsLoggedIn}) => {
   const handleSubmit = async(e) => {
      
     e.preventDefault();
-    console.log("Button Clicked");
+  
       const response = await fetch("http://localhost:3000/api/auth/login", {
       method: "POST",
       headers: {
@@ -23,10 +23,13 @@ const Login = ({setIsLoggedIn}) => {
       credentials: 'include'
     });
       const data = await response.json();
-    console.log(data);
+   
     if(response.ok){
+      
+   console.log("LOGIN ROLE:", data.role);
       console.log(data.message);
       setIsLoggedIn(true)
+      setUserRole(data.role)
       navigate("/");
     }else{
       console.log(data.message);

@@ -8,7 +8,9 @@ const ClassDetails = () => {
   const navigate = useNavigate();
 
     const handleBooking = async () => {
+    console.log("1. Booking function started");
   try {
+    console.log("2. Sending request");
     const response = await fetch(
       "http://localhost:3000/api/auth/book",
       {
@@ -22,9 +24,12 @@ const ClassDetails = () => {
         })
       }
     );
-
+   
+       console.log("3. Response received");
     const data = await response.json();
-
+    console.log("4. JSON received:", data);
+    
+             
     console.log("Class booked:", data);
 
     if (response.ok) {

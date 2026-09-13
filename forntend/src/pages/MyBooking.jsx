@@ -23,6 +23,7 @@ const MyBooking = () => {
       if (response.ok) {
         setBooking(data.bookings);
         console.log(data.message);
+        alert("Class Booked")
       } else {
         navigate("/");
       }

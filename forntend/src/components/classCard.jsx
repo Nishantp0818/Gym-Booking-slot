@@ -3,7 +3,9 @@ import { useNavigate } from "react-router-dom";
 const ClassCard = ({ item }) => {
 
     const navigate = useNavigate();
+  
   return (
+    
     <div>
       <h3>{item.name}</h3>
       <p>Category: {item.category}</p>

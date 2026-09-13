@@ -27,6 +27,7 @@ const Home = () => {
         if (response.ok) {
 
           setClasses(data.getClasses);
+        
 
           console.log(data.message);
 
@@ -57,26 +58,8 @@ const Home = () => {
 
       {classes.map((item) => (
 
-        <ClassCard item={item} key={item._id}>
-
-          <h3>{item.name}</h3>
-
-          <p>Category: {item.category}</p>
-
-          <p>Description: {item.description}</p>
-           <img src={item.image} alt={item.name}/>
-            
-          <p>Date: {item.date}</p>
-
-          <p>Time: {item.time}</p>
-
-          <p>Total Slots: {item.totalSlots}</p>
-
-          <p>Available Slots: {item.availableSlots}</p>
-
-          <hr />
-
-        </ClassCard>
+        <ClassCard item={item} key={item._id}/>
+      
 
       ))}
 
