@@ -1,7 +1,6 @@
-import { Link } from "react-router-dom";
-import {useState} from "react";
-import { useNavigate } from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import "./Login.css";
 
 const Login = ({setIsLoggedIn, setUserRole}) => {
 
@@ -11,7 +10,7 @@ const Login = ({setIsLoggedIn, setUserRole}) => {
 
   // API And Handle Submit Function
   const handleSubmit = async(e) => {
-     
+     try{
     e.preventDefault();
   
       const response = await fetch("http://localhost:3000/api/auth/login", {
@@ -34,6 +33,9 @@ const Login = ({setIsLoggedIn, setUserRole}) => {
     }else{
       console.log(data.message);
     }
+  }catch(error){
+    console.error("Error while getting loggin:", error);
+  }
   }
 
   

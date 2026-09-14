@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-
+import "./classdetails.css";
 
 const ClassDetails = () => {
   const { id } = useParams();
@@ -77,7 +77,7 @@ const ClassDetails = () => {
   }
 
   return (
-    <div>
+     <div className="class-details">
       <img src={classData.image} alt={classData.name} />
 
       <h1>{classData.name}</h1>

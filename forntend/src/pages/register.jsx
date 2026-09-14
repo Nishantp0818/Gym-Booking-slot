@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
 import {useState} from "react";
 import { useNavigate } from "react-router-dom";
+import "./Register.css"
 
-const Register = () => {
+const Register = ({setIsLoggedIn, setUserRole}) => {
 
 const [name, setName] = useState("");
 const [email, setEmail] = useState("");
@@ -12,6 +13,7 @@ const navigate = useNavigate();
 
 // API And Handle Submit Function
 const handleSubmit = async(e) => {
+  try{
   e.preventDefault()
 
   const response = await fetch("http://localhost:3000/api/auth/register", {
@@ -26,11 +28,17 @@ const handleSubmit = async(e) => {
   const data = await response.json();
   console.log(data);
   if(response.ok){
+     setIsLoggedIn(true)
+  setUserRole("member");
+
     console.log(data.message);
     navigate("/");
   }else{
     console.log(data.message);
   }
+}catch(error){
+console.error("Error while getting register:", error);
+}
 };
 
   return (

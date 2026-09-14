@@ -1,16 +1,14 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ClassCard from "../components/classCard";
+import "./Home.css";
 
 const Home = () => {
-
   const [classes, setClasses] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
-
     const getClasses = async () => {
-
       try {
         const response = await fetch(
           "http://localhost:3000/api/auth/get",
@@ -25,22 +23,14 @@ const Home = () => {
         console.log("Data:", data);
 
         if (response.ok) {
-
           setClasses(data.getClasses);
-        
-
           console.log(data.message);
-
         } else {
-
           navigate("/login");
-
         }
 
       } catch (error) {
-
         console.error("Error fetching classes:", error);
-
       }
     };
 
@@ -48,20 +38,23 @@ const Home = () => {
 
   }, [navigate]);
 
-
   return (
-    <div>
+    <div className="home-container">
 
-      <h1>Welcome to Gym Slot Booking</h1>
+      <section className="hero-section">
+        <h1>Welcome to Gym Slot Booking</h1>
+        <p>Book your fitness class and stay consistent with your goals.</p>
+      </section>
 
-      <h2>Available Classes</h2>
+      <section className="classes-section">
+        <h2>Available Classes</h2>
 
-      {classes.map((item) => (
-
-        <ClassCard item={item} key={item._id}/>
-      
-
-      ))}
+        <div className="classes-grid">
+          {classes.map((item) => (
+            <ClassCard item={item} key={item._id} />
+          ))}
+        </div>
+      </section>
 
     </div>
   );

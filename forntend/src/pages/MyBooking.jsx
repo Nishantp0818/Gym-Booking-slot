@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import "./MyBooking.css"
 import { useEffect, useState } from "react";
 
 const MyBooking = () => {
@@ -21,9 +22,10 @@ const MyBooking = () => {
       console.log("data:", data);
 
       if (response.ok) {
+        console.log("Member have simile types of bookings",data)
         setBooking(data.bookings);
         console.log(data.message);
-        alert("Class Booked")
+      
       } else {
         navigate("/");
       }

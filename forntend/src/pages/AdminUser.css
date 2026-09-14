@@ -1,0 +1,167 @@
+.admin-users-container {
+  min-height: 100vh;
+  background: #f3f4f6;
+  padding: 45px 25px 60px;
+  box-sizing: border-box;
+}
+
+.admin-users-container h1 {
+  text-align: center;
+  color: #111827;
+  font-size: 34px;
+  margin: 0 0 35px;
+}
+
+/* Table wrapper */
+
+.users-table-wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+
+  background: white;
+  border-radius: 14px;
+
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.09);
+
+  overflow-x: auto;
+}
+
+/* Table */
+
+.users-table {
+  width: 100%;
+  min-width: 700px;
+
+  border-collapse: collapse;
+}
+
+.users-table th {
+  background: #111827;
+  color: white;
+
+  padding: 15px 18px;
+
+  text-align: left;
+
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.users-table td {
+  padding: 15px 18px;
+
+  border-bottom: 1px solid #e5e7eb;
+
+  color: #4b5563;
+  font-size: 14px;
+}
+
+.users-table tbody tr {
+  transition: background 0.2s ease;
+}
+
+.users-table tbody tr:hover {
+  background: #f9fafb;
+}
+
+.users-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Role badges */
+
+.role-badge {
+  display: inline-block;
+
+  padding: 5px 11px;
+
+  border-radius: 20px;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  text-transform: capitalize;
+}
+
+/* Member */
+
+.member-badge {
+  background: #e5e7eb;
+  color: #374151;
+}
+
+/* Trainer */
+
+.trainer-badge {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+/* Admin */
+
+.admin-badge {
+  background: #ede9fe;
+  color: #6d28d9;
+}
+
+/* Make Trainer button */
+
+.make-trainer-btn {
+  padding: 9px 14px;
+
+  border: none;
+  border-radius: 7px;
+
+  background: #111827;
+  color: white;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.3s ease,
+    transform 0.2s ease;
+}
+
+.make-trainer-btn:hover {
+  background: #374151;
+  transform: translateY(-1px);
+}
+
+/* Loading */
+
+.admin-users-loading {
+  text-align: center;
+
+  margin-top: 60px;
+
+  color: #374151;
+}
+
+/* No users */
+
+.admin-users-container > p {
+  text-align: center;
+
+  color: #6b7280;
+
+  font-size: 17px;
+}
+
+/* Mobile */
+
+@media (max-width: 700px) {
+  .admin-users-container {
+    padding: 30px 15px 45px;
+  }
+
+  .admin-users-container h1 {
+    font-size: 28px;
+  }
+
+  .users-table-wrapper {
+    border-radius: 10px;
+  }
+}

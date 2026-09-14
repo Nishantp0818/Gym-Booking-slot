@@ -1,0 +1,137 @@
+.class-card {
+  width: 100%;
+  background: white;
+  border-radius: 14px;
+  overflow: hidden;
+
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.09);
+
+  display: flex;
+  flex-direction: column;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+
+  box-sizing: border-box;
+}
+
+.class-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.13);
+}
+
+/* Image */
+
+.class-card-image {
+  width: 100%;
+  height: 210px;
+
+  object-fit: cover;
+  display: block;
+}
+
+/* Content */
+
+.class-card-content {
+  padding: 20px;
+
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.class-card-content h3 {
+  margin: 0 0 12px;
+
+  color: #111827;
+  font-size: 23px;
+}
+
+.class-card-content p {
+  margin: 7px 0;
+
+  color: #4b5563;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.class-card-content strong {
+  color: #111827;
+}
+
+/* Description */
+
+.class-description {
+  height: 45px;
+
+  overflow: hidden;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+/* Slots */
+
+.slot-info {
+  margin-top: 12px;
+  padding: 10px 12px;
+
+  background: #f9fafb;
+
+  border-radius: 8px;
+}
+
+.slot-info p {
+  margin: 5px 0;
+}
+
+/* Button */
+
+.view-details-btn {
+  width: 100%;
+
+  margin-top: auto;
+  padding: 12px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: #111827;
+  color: white;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.3s ease,
+    transform 0.2s ease;
+}
+
+.view-details-btn:hover {
+  background: #374151;
+  transform: translateY(-2px);
+}
+
+/* Tablet */
+
+@media (max-width: 900px) {
+  .classes-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+  .classes-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .class-card-image {
+    height: 220px;
+  }
+}

@@ -1,0 +1,97 @@
+.create-class-container {
+  min-height: 100vh;
+  background: #f3f4f6;
+  padding: 50px 20px;
+  box-sizing: border-box;
+}
+
+.create-class-container h1 {
+  text-align: center;
+  color: #111827;
+  font-size: 34px;
+  margin-bottom: 30px;
+}
+
+.create-class-container form {
+  max-width: 650px;
+  margin: 0 auto;
+  background: white;
+  padding: 35px;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+
+  box-sizing: border-box;
+}
+
+.create-class-container input,
+.create-class-container textarea {
+  width: 100%;
+  padding: 13px 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 15px;
+  box-sizing: border-box;
+  outline: none;
+  font-family: inherit;
+}
+
+.create-class-container textarea {
+  min-height: 130px;
+  resize: vertical;
+}
+
+.create-class-container input:focus,
+.create-class-container textarea:focus {
+  border-color: #111827;
+}
+
+.create-class-container input::placeholder,
+.create-class-container textarea::placeholder {
+  color: #9ca3af;
+}
+
+.create-class-container button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 5px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: #111827;
+  color: white;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.create-class-container button:hover {
+  background: #374151;
+  transform: translateY(-2px);
+}
+
+.create-class-container button:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 600px) {
+  .create-class-container {
+    padding: 30px 15px;
+  }
+
+  .create-class-container h1 {
+    font-size: 28px;
+  }
+
+  .create-class-container form {
+    padding: 25px 20px;
+  }
+}

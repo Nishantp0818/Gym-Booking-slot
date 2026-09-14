@@ -1,25 +1,65 @@
 import { useNavigate } from "react-router-dom";
+import "./classcard.css";
 
 const ClassCard = ({ item }) => {
 
-    const navigate = useNavigate();
-  
+  const navigate = useNavigate();
+
   return (
-    
-    <div>
-      <h3>{item.name}</h3>
-      <p>Category: {item.category}</p>
-      <p>Description: {item.description}</p>
-       <img src={item.image} alt={item.name}/>
-       <p>Date: {new Date(item.date).toLocaleDateString("en-IN", {
-           day: "2-digit",
-           month: "short",
-           year: "numeric"})}</p>
-     
-      <p>Time: {item.time}</p>
-      <p>Total Slots: {item.totalSlots}</p>
-      <p>Available Slots: {item.availableSlots}</p>
-      <button type="button" onClick={()=>{navigate(`/class/${item._id}`)}}> View Details </button>
+    <div className="class-card">
+
+      <img
+        src={item.image}
+        alt={item.name}
+        className="class-card-image"
+      />
+
+      <div className="class-card-content">
+
+        <h3>{item.name}</h3>
+
+        <p>
+          <strong>Category:</strong> {item.category}
+        </p>
+
+        <p className="class-description">
+          {item.description}
+        </p>
+
+        <p>
+          <strong>Date:</strong>{" "}
+          {new Date(item.date).toLocaleDateString("en-IN", {
+            day: "2-digit",
+            month: "short",
+            year: "numeric"
+          })}
+        </p>
+
+        <p>
+          <strong>Time:</strong> {item.time}
+        </p>
+
+        <div className="slot-info">
+          <p>
+            <strong>Total Slots:</strong> {item.totalSlots}
+          </p>
+
+          <p>
+            <strong>Available:</strong> {item.availableSlots}
+          </p>
+        </div>
+
+        <button
+          type="button"
+          className="view-details-btn"
+          onClick={() => {
+            navigate(`/class/${item._id}`);
+          }}
+        >
+          View Details
+        </button>
+
+      </div>
     </div>
   );
 };

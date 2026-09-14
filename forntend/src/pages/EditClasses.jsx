@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import "./editclasses.css"
 
 const EditClass = () => {
   const { id } = useParams();

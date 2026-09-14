@@ -1,0 +1,139 @@
+.edit-class-container {
+  min-height: 100vh;
+  background: #f3f4f6;
+  padding: 50px 20px;
+  box-sizing: border-box;
+}
+
+.edit-class-container h1 {
+  text-align: center;
+  color: #111827;
+  font-size: 34px;
+  margin: 0 0 30px;
+}
+
+.edit-class-container form {
+  max-width: 650px;
+  margin: 0 auto;
+  padding: 35px;
+
+  background: white;
+  border-radius: 16px;
+
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+
+  box-sizing: border-box;
+}
+
+.edit-class-container input,
+.edit-class-container textarea {
+  width: 100%;
+  padding: 13px 14px;
+
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+
+  font-size: 15px;
+  font-family: inherit;
+
+  outline: none;
+  box-sizing: border-box;
+}
+
+.edit-class-container textarea {
+  min-height: 130px;
+  resize: vertical;
+}
+
+.edit-class-container input:focus,
+.edit-class-container textarea:focus {
+  border-color: #111827;
+}
+
+.edit-class-container input::placeholder,
+.edit-class-container textarea::placeholder {
+  color: #9ca3af;
+}
+
+/* Update button */
+
+.edit-class-container button[type="submit"] {
+  width: 100%;
+  padding: 14px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: #111827;
+  color: white;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.3s ease,
+    transform 0.2s ease;
+}
+
+.edit-class-container button[type="submit"]:hover {
+  background: #374151;
+  transform: translateY(-2px);
+}
+
+/* Cancel button */
+
+.edit-class-container button[type="button"] {
+  width: 100%;
+  padding: 13px;
+
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+
+  background: white;
+  color: #374151;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.3s ease,
+    color 0.3s ease;
+}
+
+.edit-class-container button[type="button"]:hover {
+  background: #f3f4f6;
+  color: #111827;
+}
+
+/* Loading */
+
+.edit-class-container + p {
+  text-align: center;
+  margin-top: 50px;
+  color: #6b7280;
+  font-size: 17px;
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+  .edit-class-container {
+    padding: 30px 15px 45px;
+  }
+
+  .edit-class-container h1 {
+    font-size: 28px;
+  }
+
+  .edit-class-container form {
+    padding: 25px 20px;
+  }
+}

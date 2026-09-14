@@ -1,0 +1,103 @@
+.home-container {
+  min-height: 100vh;
+  background: #f3f4f6;
+}
+
+
+/* Hero Section */
+
+.hero-section {
+  text-align: center;
+  padding: 55px 20px;
+
+  background: #111827;
+  color: white;
+}
+
+.hero-section h1 {
+  margin: 0 0 12px;
+
+  font-size: 42px;
+  font-weight: 800;
+  color: white;
+}
+
+.hero-section p {
+  margin: 0;
+
+  font-size: 18px;
+  color: #d1d5db;
+}
+
+
+/* Classes Section */
+
+.classes-section {
+  max-width: 1200px;
+  margin: 0 auto;
+
+  padding: 45px 25px 60px;
+}
+
+.classes-section h2 {
+  text-align: center;
+
+  margin: 0 0 35px;
+
+  font-size: 30px;
+  color: #111827;
+}
+
+
+/* Classes Grid */
+
+.classes-grid {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 25px;
+}
+
+
+/* Tablet */
+
+@media (max-width: 900px) {
+  .classes-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .hero-section h1 {
+    font-size: 34px;
+  }
+}
+
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+  .hero-section {
+    padding: 40px 15px;
+  }
+
+  .hero-section h1 {
+    font-size: 28px;
+  }
+
+  .hero-section p {
+    font-size: 15px;
+  }
+
+  .classes-section {
+    padding: 35px 15px 45px;
+  }
+
+  .classes-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .classes-section h2 {
+    font-size: 25px;
+  }
+}

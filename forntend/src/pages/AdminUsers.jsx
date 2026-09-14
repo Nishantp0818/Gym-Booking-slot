@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import "./adminuser.css"
 
 const AdminUsers = () => {
   const [users, setUsers] = useState([]);
@@ -20,7 +21,6 @@ const AdminUsers = () => {
       console.log("Users:", data);
 
       if (response.ok) {
-        
         setUsers(data.users);
       } else {
         alert(data.message);
@@ -68,56 +68,73 @@ const AdminUsers = () => {
   }, []);
 
   if (loading) {
-    return <h2>Loading users...</h2>;
+    return <h2 className="admin-users-loading">Loading users...</h2>;
   }
 
   return (
-    <div>
+    <div className="admin-users-container">
       <h1>Manage Users</h1>
 
       {users.length === 0 ? (
         <p>No users found.</p>
       ) : (
-        <table border="1">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Contact</th>
-              <th>Role</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            {users.map((user) => (
-              <tr key={user._id}>
-                <td>{user.name}</td>
-                <td>{user.email}</td>
-                <td>{user.contact}</td>
-                <td>{user.role}</td>
-
-                <td>
-                  {user.role === "member" && (
-                    <button
-                      onClick={() => makeTrainer(user._id)}
-                    >
-                      Make Trainer
-                    </button>
-                  )}
-
-                  {user.role === "trainer" && (
-                    <span>Trainer</span>
-                  )}
-
-                  {user.role === "admin" && (
-                    <span>Admin</span>
-                  )}
-                </td>
+        <div className="users-table-wrapper">
+          <table className="users-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Contact</th>
+                <th>Role</th>
+                <th>Action</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+
+            <tbody>
+              {users.map((user) => (
+                <tr key={user._id}>
+                  <td>{user.name}</td>
+
+                  <td>{user.email}</td>
+
+                  <td>{user.contact}</td>
+
+                  <td>
+                    <span
+                      className={`role-badge ${user.role}-badge`}
+                    >
+                      {user.role}
+                    </span>
+                  </td>
+
+                  <td>
+                    {user.role === "member" && (
+                      <button
+                        type="button"
+                        className="make-trainer-btn"
+                        onClick={() => makeTrainer(user._id)}
+                      >
+                        Make Trainer
+                      </button>
+                    )}
+
+                    {user.role === "trainer" && (
+                      <span className="role-badge trainer-badge">
+                        Trainer
+                      </span>
+                    )}
+
+                    {user.role === "admin" && (
+                      <span className="role-badge admin-badge">
+                        Admin
+                      </span>
+                    )}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       )}
     </div>
   );

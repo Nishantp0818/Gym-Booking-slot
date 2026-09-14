@@ -32,9 +32,9 @@ function App() {
 
           const data = await response.json()
           console.log("ME DATA:", data);
-            setUserRole(data.role)
           console.log("Role:",data.role)
         if (response.ok) {
+           setUserRole(data.role)
           setIsLoggedIn(true);
         } else {
           setIsLoggedIn(false);
@@ -60,8 +60,7 @@ function App() {
           setUserRole={setUserRole}
           userRole={userRole}
         />
-
-              <Routes>
+            <Routes>
               <Route
               path="/trainer/create-class"
                 element={
@@ -104,7 +103,9 @@ function App() {
                             setUserRole={setUserRole} />}
           />
 
-          <Route path="/register" element={<Register />} />
+          <Route path="/register" element={<Register 
+                            setIsLoggedIn={setIsLoggedIn}
+                            setUserRole={setUserRole}/>} />
 
           <Route path="/" element={<Home />} />
 

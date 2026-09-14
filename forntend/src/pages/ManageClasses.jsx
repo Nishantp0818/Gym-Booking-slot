@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "./manageclasses.css"
 
 const ManageClasses = () => {
   const [classes, setClasses] = useState([]);
@@ -74,71 +75,78 @@ const ManageClasses = () => {
   };
 
   return (
-    <div>
-      <h1>Manage Classes</h1>
+  <div className="manage-classes-container">
+    <h1>Manage Classes</h1>
 
-      {classes.length === 0 ? (
-        <p>No classes found.</p>
-      ) : (
-        classes.map((item) => (
-          <div key={item._id}>
+    {classes.length === 0 ? (
+      <p className="no-classes">No classes found.</p>
+    ) : (
+      <div className="manage-classes-grid">
+        {classes.map((item) => (
+          <div className="manage-class-card" key={item._id}>
             <img
               src={item.image}
               alt={item.name}
-              width="200"
+              className="manage-class-image"
             />
 
-            <h2>{item.name}</h2>
+            <div className="manage-class-content">
+              <h2>{item.name}</h2>
 
-            <p>
-              <strong>Category:</strong> {item.category}
-            </p>
+              <p>
+                <strong>Category:</strong> {item.category}
+              </p>
 
-            <p>
-              <strong>Description:</strong> {item.description}
-            </p>
+              <p>
+                <strong>Description:</strong> {item.description}
+              </p>
 
-            <p>
-              <strong>Date:</strong>{" "}
-              {new Date(item.date).toLocaleDateString("en-IN", {
-                day: "2-digit",
-                month: "short",
-                year: "numeric",
-              })}
-            </p>
+              <p>
+                <strong>Date:</strong>{" "}
+                {new Date(item.date).toLocaleDateString("en-IN", {
+                  day: "2-digit",
+                  month: "short",
+                  year: "numeric",
+                })}
+              </p>
 
-            <p>
-              <strong>Time:</strong> {item.time}
-            </p>
+              <p>
+                <strong>Time:</strong> {item.time}
+              </p>
 
-            <p>
-              <strong>Total Slots:</strong> {item.totalSlots}
-            </p>
+              <div className="slot-info">
+                <p>
+                  <strong>Total Slots:</strong> {item.totalSlots}
+                </p>
 
-            <p>
-              <strong>Available Slots:</strong> {item.availableSlots}
-            </p>
+                <p>
+                  <strong>Available Slots:</strong> {item.availableSlots}
+                </p>
+              </div>
 
-            <button
-              type="button"
-              onClick={() => handleEdit(item._id)}
-            >
-              Edit
-            </button>
+              <div className="class-actions">
+                <button
+                  type="button"
+                  className="edit-btn"
+                  onClick={() => handleEdit(item._id)}
+                >
+                  Edit
+                </button>
 
-            <button
-              type="button"
-              onClick={() => handleDelete(item._id)}
-            >
-              Delete
-            </button>
-
-            <hr />
+                <button
+                  type="button"
+                  className="delete-btn"
+                  onClick={() => handleDelete(item._id)}
+                >
+                  Delete
+                </button>
+              </div>
+            </div>
           </div>
-        ))
-      )}
-    </div>
-  );
-};
+        ))}
+      </div>
+    )}
+  </div>
+)}
 
 export default ManageClasses;

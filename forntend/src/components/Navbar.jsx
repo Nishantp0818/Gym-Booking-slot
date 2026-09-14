@@ -1,78 +1,95 @@
 import { Link, useNavigate } from "react-router-dom";
+import "./Navbar.css";
 
 const Navbar = ({ isLoggedIn, setIsLoggedIn, userRole, setUserRole }) => {
   const navigate = useNavigate();
 
   const handleLogout = async () => {
-    const response = await fetch(
-      "http://localhost:3000/api/auth/logout",
-      {
-        method: "POST",
-        credentials: "include",
+    try {
+      const response = await fetch(
+        "http://localhost:3000/api/auth/logout",
+        {
+          method: "POST",
+          credentials: "include",
+        }
+      );
+
+      const data = await response.json();
+
+      console.log("data:", data);
+
+      if (response.ok) {
+        console.log(data.message);
+
+        setIsLoggedIn(false);
+        setUserRole("");
+        navigate("/login");
       }
-    );
-
-    const data = await response.json();
-
-    console.log("data:", data);
-
-    if (response.ok) {
-      console.log(data.message);
-
-      setIsLoggedIn(false);
-      setUserRole("");
-      navigate("/");
+    } catch (error) {
+      console.error("Error while getting logout:", error);
     }
   };
 
   return (
-    <nav>
-      <Link to="/">Home</Link>
+    <nav className="navbar">
 
-      {isLoggedIn === true ? (
-        <>
-          {/* Member */}
-          {userRole === "member" && (
-            <Link to="/My-Booking">My Booking</Link>
-          )}
+      <Link to="/" className="navbar-logo">
+        GYM BOOKING
+      </Link>
 
-          {/* Trainer */}
-          {userRole === "trainer" && (
-            <>
-              <Link to="/trainer/create-class">
-                Create Class
-              </Link>
+      <div className="navbar-links">
 
-              <Link to="/trainer/manage-classes">
-                Manage Classes
-              </Link>
-            </>
-          )}
+        <Link to="/">Home</Link>
 
-          {/* Admin */}
-          {userRole === "admin" && (
-            <>
-              <Link to="/admin/users">
-                Manage Users
-              </Link>
+        {isLoggedIn === true ? (
+          <>
+            {/* Member */}
+            {userRole === "member" && (
+              <Link to="/My-Booking">My Booking</Link>
+            )}
 
-              <Link to="/admin/all-bookings">
-                All Bookings
-              </Link>
-            </>
-          )}
+            {/* Trainer */}
+            {userRole === "trainer" && (
+              <>
+                <Link to="/trainer/create-class">
+                  Create Class
+                </Link>
 
-          <button type="button" onClick={handleLogout}>
-            Logout
-          </button>
-        </>
-      ) : (
-        <>
-          <Link to="/login">Login</Link>
+                <Link to="/trainer/manage-classes">
+                  Manage Classes
+                </Link>
+              </>
+            )}
 
-          <Link to="/register">Register</Link>
-        </>
-      )}
+            {/* Admin */}
+            {userRole === "admin" && (
+              <>
+                <Link to="/admin/users">
+                  Manage Users
+                </Link>
+
+                <Link to="/admin/all-bookings">
+                  All Bookings
+                </Link>
+              </>
+            )}
+
+            <button
+              type="button"
+              className="logout-btn"
+              onClick={handleLogout}
+            >
+              Logout
+            </button>
+          </>
+        ) : (
+          <>
+            <Link to="/login">Login</Link>
+            <Link to="/register">Register</Link>
+          </>
+        )}
+
+      </div>
     </nav>
   );
 };

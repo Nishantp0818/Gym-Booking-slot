@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import "./adminbooking.css"
 
 const AdminBookings = () => {
   const [bookings, setBookings] = useState([]);
@@ -40,13 +41,14 @@ const AdminBookings = () => {
   }
 
   return (
-    <div>
-      <h1>All Bookings</h1>
+  <div className="admin-bookings-container">
+    <h1>All Bookings</h1>
 
-      {bookings.length === 0 ? (
-        <p>No bookings found</p>
-      ) : (
-        <table border="1" cellPadding="10">
+    {bookings.length === 0 ? (
+      <p className="no-bookings">No bookings found</p>
+    ) : (
+      <div className="bookings-table-wrapper">
+        <table className="bookings-table">
           <thead>
             <tr>
               <th>User Name</th>
@@ -62,24 +64,42 @@ const AdminBookings = () => {
           <tbody>
             {bookings.map((booking) => (
               <tr key={booking._id}>
-                <td>{booking.user?.name}</td>
-                <td>{booking.user?.email}</td>
-                <td>{booking.class?.name}</td>
-                <td>{booking.class?.category}</td>
+                <td>{booking.user?.name || "N/A"}</td>
+
+                <td>{booking.user?.email || "N/A"}</td>
+
+                <td>{booking.class?.name || "N/A"}</td>
+
+                <td>{booking.class?.category || "N/A"}</td>
+
                 <td>
                   {booking.class?.date
-                    ? new Date(booking.class.date).toLocaleDateString()
+                    ? new Date(
+                        booking.class.date
+                      ).toLocaleDateString("en-IN", {
+                        day: "2-digit",
+                        month: "short",
+                        year: "numeric",
+                      })
                     : "N/A"}
                 </td>
-                <td>{booking.class?.time}</td>
-                <td>{booking.status}</td>
+
+                <td>{booking.class?.time || "N/A"}</td>
+
+                <td>
+                  <span
+                    className={`booking-status ${booking.status.toLowerCase()}`}
+                  >
+                    {booking.status}
+                  </span>
+                </td>
               </tr>
             ))}
           </tbody>
         </table>
-      )}
-    </div>
-  );
-};
-
+      </div>
+    )}
+  </div>
+);
+}
 export default AdminBookings;
