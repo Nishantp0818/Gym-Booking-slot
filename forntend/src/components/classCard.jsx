@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import "./classcard.css";
+import "./classCard.css"
 
 const ClassCard = ({ item }) => {
 
