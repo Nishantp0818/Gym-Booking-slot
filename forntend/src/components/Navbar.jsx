@@ -5,15 +5,14 @@ const Navbar = ({ isLoggedIn, setIsLoggedIn, userRole, setUserRole }) => {
   const navigate = useNavigate();
 
   const handleLogout = async () => {
-    try {
-      const response = await fetch(
-        "http://localhost:3000/api/auth/logout",
-        {
-          method: "POST",
-          credentials: "include",
-        }
-      );
-
+  try {
+    const response = await fetch(
+      `${import.meta.env.VITE_API_URL}/api/auth/logout`,
+      {
+        method: "POST",
+        credentials: "include",
+      }
+    );
       const data = await response.json();
 
       console.log("data:", data);

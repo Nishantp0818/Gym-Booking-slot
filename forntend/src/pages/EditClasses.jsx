@@ -23,7 +23,7 @@ const EditClass = () => {
     const getClass = async () => {
       try {
         const response = await fetch(
-          `http://localhost:3000/api/auth/get/${id}`,
+         `${import.meta.env.VITE_API_URL}/api/auth/get/${id}`,
           {
             method: "GET",
             credentials: "include",
@@ -78,7 +78,7 @@ const EditClass = () => {
 
     try {
       const response = await fetch(
-        `http://localhost:3000/api/auth/update/${id}`,
+        `${import.meta.env.VITE_API_URL}/api/auth/update/${id}`,
         {
           method: "PUT",
           headers: {

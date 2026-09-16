@@ -9,7 +9,7 @@ const ManageClasses = () => {
   const getClasses = async () => {
     try {
       const response = await fetch(
-        "http://localhost:3000/api/auth/get",
+       `${import.meta.env.VITE_API_URL}/api/auth/get`,
         {
           method: "GET",
           credentials: "include",
@@ -45,7 +45,7 @@ const ManageClasses = () => {
 
     try {
       const response = await fetch(
-        `http://localhost:3000/api/auth/delete/${id}`,
+       `${import.meta.env.VITE_API_URL}/api/auth/delete/${id}`,
         {
           method: "DELETE",
           credentials: "include",

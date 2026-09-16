@@ -8,7 +8,7 @@ const AdminBookings = () => {
   const fetchBookings = async () => {
     try {
       const response = await fetch(
-        "http://localhost:3000/api/auth/bookings",
+       `${import.meta.env.VITE_API_URL}/api/auth/bookings`,
         {
           method: "GET",
           credentials: "include",

@@ -10,7 +10,7 @@ const MyBooking = () => {
   const getBookings = async () => {
     try {
       const response = await fetch(
-        "http://localhost:3000/api/auth/get-bookings",
+       `${import.meta.env.VITE_API_URL}/api/auth/get-bookings`,
         {
           method: "GET",
           credentials: "include",
@@ -42,7 +42,7 @@ const MyBooking = () => {
   const handleCancel = async (bookingId) => {
     try {
       const response = await fetch(
-        `http://localhost:3000/api/auth/cancel-booking/${bookingId}`,
+      `${import.meta.env.VITE_API_URL}/api/auth/cancel-booking/${bookingId}`,
         {
           method: "DELETE",
           credentials: "include",

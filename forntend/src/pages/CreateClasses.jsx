@@ -26,7 +26,7 @@ const CreateClass = () => {
 
     try {
       const response = await fetch(
-        "http://localhost:3000/api/auth/create",
+       `${import.meta.env.VITE_API_URL}/api/auth/create`,
         {
           method: "POST",
           headers: {

@@ -9,7 +9,7 @@ const AdminUsers = () => {
   const getUsers = async () => {
     try {
       const response = await fetch(
-        "http://localhost:3000/api/auth/users",
+        `${import.meta.env.VITE_API_URL}/api/auth/users`,
         {
           method: "GET",
           credentials: "include",
@@ -36,7 +36,7 @@ const AdminUsers = () => {
   const makeTrainer = async (userId) => {
     try {
       const response = await fetch(
-        `http://localhost:3000/api/auth/update-role/${userId}`,
+      `${import.meta.env.VITE_API_URL}/api/auth/update-role/${userId}`,
         {
           method: "PUT",
           credentials: "include",

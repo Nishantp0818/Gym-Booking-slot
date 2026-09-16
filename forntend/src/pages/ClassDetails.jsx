@@ -12,7 +12,7 @@ const ClassDetails = () => {
   try {
     console.log("2. Sending request");
     const response = await fetch(
-      "http://localhost:3000/api/auth/book",
+      `${import.meta.env.VITE_API_URL}/api/auth/book`,
       {
         method: "POST",
         headers: {
@@ -48,7 +48,7 @@ const ClassDetails = () => {
     const getClassDetails = async () => {
       try {
         const response = await fetch(
-          `http://localhost:3000/api/auth/get/${id}`,
+          `${import.meta.env.VITE_API_URL}/api/auth/get/${id}`,
           {
             method: "GET",
             credentials: "include"
