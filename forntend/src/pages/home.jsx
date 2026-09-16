@@ -10,8 +10,8 @@ const Home = () => {
   useEffect(() => {
     const getClasses = async () => {
       try {
-        const response = await fetch(
-          "http://localhost:3000/api/auth/get",
+        const response = await 
+          fetch(`${import.meta.env.VITE_API_URL}/api/auth/get`,
           {
             method: "GET",
             credentials: "include"
