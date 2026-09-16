@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./manageclasses.css"
+import "./ManageClasses.css"
 
 const ManageClasses = () => {
   const [classes, setClasses] = useState([]);

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./createclasses.css"
+import "./CreateClasses.css"
 
 const CreateClass = () => {
   const [formData, setFormData] = useState({

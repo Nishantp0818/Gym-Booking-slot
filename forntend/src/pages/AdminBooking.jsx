@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "./adminbooking.css"
+import "./AdminBooking.css"
 
 const AdminBookings = () => {
   const [bookings, setBookings] = useState([]);

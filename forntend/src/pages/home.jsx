@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ClassCard from "../components/classCard";
-import "./Home.css";
+import "./home.css";
 
 const Home = () => {
   const [classes, setClasses] = useState([]);

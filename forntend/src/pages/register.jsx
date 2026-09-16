@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import {useState} from "react";
 import { useNavigate } from "react-router-dom";
-import "./Register.css"
+import "./register.css"
 
 const Register = ({setIsLoggedIn, setUserRole}) => {
 
