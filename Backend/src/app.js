@@ -5,8 +5,19 @@ const cors = require("cors");
 
 const app=express();
 
+const allowedOrigins = [
+    "https://gym-booking-slot-seven.vercel.app",
+    "https://gym-booking-slot-git-main-nishant-9028.vercel.app"
+];
+
 app.use(cors({
-    origin: "https://gym-booking-slot-seven.vercel.app",
+    origin: function (origin, callback) {
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error("Not allowed by CORS"));
+        }
+    },
     credentials: true
 }));
 
