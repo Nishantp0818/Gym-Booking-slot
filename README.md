@@ -3,9 +3,11 @@
 A full-stack **Gym Slot Booking System** built using the MERN stack.
 The application allows members to explore gym classes, book available slots, manage bookings, while trainers and admins can manage classes and users.
 
-## 🚀 Live Demo
+## 🚀 Live Demo  : [Gym Booking Slot](https://gym-booking-slot-seven.vercel.app/)
 
-[Gym Booking Slot](https://gym-booking-slot-seven.vercel.app/)
+
+<img width="2428" height="1430" alt="image" src="https://github.com/user-attachments/assets/92a7424c-db5b-419f-b919-48707f5dfcde" />
+
 
 ## 📌 Features
 
