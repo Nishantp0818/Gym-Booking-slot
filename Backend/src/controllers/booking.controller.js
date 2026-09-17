@@ -1,4 +1,3 @@
-const { sendmail } = require("../services/email.service");
 const userModel = require("../models/user.model");
 const bookingModel = require('../models/booking.model');
 const classModel = require('../models/class.model');
@@ -63,18 +62,7 @@ const createBooking = async (req, res) => {
             class: classId
         });
         
-             // Send confirmation email
-        await sendmail(
-            user.email,
-            "Gym Class Booking Confirmation",
-            `Your booking has been confirmed.
-
-         Class: ${gymClass.name}
-          Date: ${gymClass.date}
-         Time: ${gymClass.time}
-
-           Thank you for booking with us.`
-          );
+          
 
         res.status(201).json({
             message: "Booking created successfully",
