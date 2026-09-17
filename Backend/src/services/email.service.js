@@ -1,35 +1,39 @@
-const path = require("path");
-require("dotenv").config({ path: path.resolve(__dirname, "../../.env") });
 const nodemailer = require("nodemailer");
 
 const transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 587,
-    secure: false,  
-      family: 4,
+    host: "smtp.resend.com",
+    port: 465,
+    secure: true,
 
     auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS
+        user: "resend",
+        pass: process.env.RESEND_API_KEY
     }
 });
 
-     const  sendmail = async (to, subject, text) => {
 
-    try{
+const sendmail = async (to, subject, text) => {
+
+    try {
+
         const mailOptions = {
-            from: process.env.EMAIL_USER,
+            from: "onboarding@resend.dev",
             to: to,
             subject: subject,
             text: text
         };
 
         await transporter.sendMail(mailOptions);
+
         console.log("Email sent successfully");
+
     } catch (error) {
+
         console.error("Error sending email:", error);
         throw error;
+
     }
-}
-   
+};
+
+
 module.exports = { sendmail };
