@@ -22,7 +22,6 @@ The application allows members to explore gym classes, book available slots, man
 * 👨‍💼 Admin can view and manage users
 * 🔄 Admin can update member roles
 * 📊 Admin can view all bookings
-* 📧 Email notification after booking
 * 🔒 Protected routes based on user roles
 * 📱 Responsive user interface
 
@@ -44,7 +43,7 @@ The application allows members to explore gym classes, book available slots, man
 * Mongoose
 * JWT
 * Bcrypt
-* Nodemailer
+  
 
 ## 🏗️ Project Structure
 
@@ -64,7 +63,7 @@ Gym-Booking-slot/
     │   ├── models/
     │   ├── routes/
     │   ├── middleware/
-    │   └── services/
+    │   
     └── server.js
 ```
 
